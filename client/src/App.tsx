@@ -5,6 +5,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Todo from './components/Todo';
 
+// API URL configuration
+export const API_URL = process.env.REACT_APP_API_URL || 'https://todo-app-react-production.up.railway.app';
+
 const AppContainer = styled.div`
   min-height: 100vh;
   background-color: #f5f5f5;

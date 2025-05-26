@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { format, addMinutes } from 'date-fns';
 
 const Container = styled.div`
   background: white;

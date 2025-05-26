@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 import ProductivityTools from './ProductivityTools';
+import { API_URL } from '../App';
 
-interface TodoItem {
+interface TodoItemType {
   _id: string;
   text: string;
   completed: boolean;
@@ -248,7 +249,7 @@ const DeleteButton = styled.button`
 `;
 
 const Todo: React.FC = () => {
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useState<TodoItemType[]>([]);
   const [newTodo, setNewTodo] = useState<NewTodo>({
     text: '',
     priority: 'medium',
@@ -270,7 +271,7 @@ const Todo: React.FC = () => {
   const fetchTodos = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5050/api/todos', {
+      const response = await fetch(`${API_URL}/api/todos`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -288,7 +289,7 @@ const Todo: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5050/api/todos', {
+      const response = await fetch(`${API_URL}/api/todos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -317,7 +318,7 @@ const Todo: React.FC = () => {
   const toggleTodo = async (id: string, completed: boolean) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5050/api/todos/${id}`, {
+      const response = await fetch(`${API_URL}/api/todos/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -338,7 +339,7 @@ const Todo: React.FC = () => {
   const deleteTodo = async (id: string) => {
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5050/api/todos/${id}`, {
+      await fetch(`${API_URL}/api/todos/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

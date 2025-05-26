@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate, Link } from 'react-router-dom';
+import { API_URL } from '../App';
 
 const Container = styled.div`
   display: flex;
@@ -125,7 +126,7 @@ const Register: React.FC = () => {
 
     try {
       console.log('Attempting to register user:', formData.email);
-      const response = await fetch('http://localhost:5050/api/auth/register', {
+      const response = await fetch(`${API_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
