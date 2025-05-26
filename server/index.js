@@ -30,10 +30,13 @@ app.use(cors({
   origin: [
     process.env.CLIENT_URL,
     'http://localhost:3000',
-    'https://todo-app-react-pglp7avoz-manava10s-projects.vercel.app'
+    'https://todo-app-react-pglp7avoz-manava10s-projects.vercel.app',
+    'https://todo-app-react-n9n0m4xgp-manava10s-projects.vercel.app',
+    'https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app'
   ],
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  credentials: true
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
 }));
 
 // Simple request logging
@@ -52,7 +55,7 @@ app.get('/', (req, res) => {
 });
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'ok',
     uptime: process.uptime(),
