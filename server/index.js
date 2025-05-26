@@ -32,7 +32,8 @@ app.use(cors({
     'http://localhost:3000',
     'https://todo-app-react-pglp7avoz-manava10s-projects.vercel.app',
     'https://todo-app-react-n9n0m4xgp-manava10s-projects.vercel.app',
-    'https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app'
+    'https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app',
+    'https://manava10.github.io/todo-app-react'
   ],
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   credentials: true,
