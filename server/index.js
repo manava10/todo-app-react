@@ -27,7 +27,11 @@ console.log('Environment check:', {
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: [
+    process.env.CLIENT_URL,
+    'http://localhost:3000',
+    'https://todo-app-react-pglp7avoz-manava10s-projects.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
   credentials: true
 }));
