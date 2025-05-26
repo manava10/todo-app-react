@@ -27,17 +27,29 @@ console.log('Environment check:', {
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: [
-    process.env.CLIENT_URL,
-    'http://localhost:3000',
-    'https://todo-app-react-pglp7avoz-manava10s-projects.vercel.app',
-    'https://todo-app-react-n9n0m4xgp-manava10s-projects.vercel.app',
-    'https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app',
-    'https://manava10.github.io/todo-app-react'
-  ],
+  origin: function(origin, callback) {
+    const allowedOrigins = [
+      process.env.CLIENT_URL,
+      'http://localhost:3000',
+      'https://todo-app-react-pglp7avoz-manava10s-projects.vercel.app',
+      'https://todo-app-react-n9n0m4xgp-manava10s-projects.vercel.app',
+      'https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app',
+      'https://manava10.github.io',
+      'https://manava10.github.io/todo-app-react'
+    ];
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      console.log('CORS blocked request from:', origin);
+      return callback(new Error('Not allowed by CORS'));
+    }
+    console.log('CORS allowed request from:', origin);
+    return callback(null, true);
+  },
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
 
 // Simple request logging
