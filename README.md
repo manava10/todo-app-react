@@ -1,149 +1,152 @@
 # Todo App with Productivity Features
 
-A full-stack Todo application with productivity features including Pomodoro timer, progress tracking, and task management.
+A modern, full-stack Todo application with productivity features built using React, Node.js, Express, and MongoDB.
 
-## Live Demo
-[Frontend](https://your-vercel-url.vercel.app) | [Backend](https://your-railway-url.railway.app)
+## 🌟 Live Demo
 
-## Features
+- Frontend: [https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app](https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app)
+- Backend API: [https://todo-app-react-production.up.railway.app](https://todo-app-react-production.up.railway.app)
 
-- User Authentication (Signup/Login)
-- Todo Management (Create, Read, Update, Delete)
-- Priority Levels (Low, Medium, High)
-- Categories and Tags
-- Due Dates
-- Pomodoro Timer with Custom Duration
-- Progress Tracking
-- Daily Goals
-- Responsive Design
+## ✨ Features
 
-## Tech Stack
+### Core Features
+- 🔐 User Authentication (Register/Login)
+- ✅ Create, Read, Update, Delete (CRUD) operations for todos
+- 🏷️ Categorize todos
+- 🏷️ Add tags to todos
+- ⭐ Set priority levels (Low, Medium, High)
+- 📅 Set due dates for tasks
+- 🔍 Filter todos by status, priority, and category
 
-- Frontend: React, TypeScript, Styled Components
-- Backend: Node.js, Express
+### Productivity Features
+- ⏱️ Pomodoro Timer
+  - 25-minute work sessions
+  - 5-minute breaks
+  - Customizable timer duration
+  - Visual timer display
+- 📊 Progress Tracking
+  - Overall progress bar
+  - Daily goal tracker
+  - Visual completion indicators
+- 📈 Task Analytics
+  - Task completion statistics
+  - Daily/weekly progress
+  - Category-wise distribution
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React.js
+- TypeScript
+- Styled Components
+- React Router
+- Context API for state management
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- bcrypt for password hashing
+
+### Deployment
+- Frontend: Vercel
+- Backend: Railway
 - Database: MongoDB Atlas
-- Authentication: JWT
-- Deployment: Vercel (Frontend), Railway (Backend)
 
-## Prerequisites
+## 🚀 Getting Started
 
+### Prerequisites
 - Node.js (v14 or higher)
-- MongoDB Atlas Account
+- MongoDB
 - npm or yarn
-- Git
 
-## Local Development Setup
+### Local Development Setup
 
-1. Clone the repository:
-```bash
-git clone https://github.com/manava10/todo-app-react.git
-cd todo-app-react
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/todo-app-react.git
+   cd todo-app-react
+   ```
 
-2. Install dependencies:
-```bash
-# Install backend dependencies
-cd server
-npm install
+2. **Backend Setup**
+   ```bash
+   cd server
+   npm install
+   # Create .env file with the following variables:
+   # MONGODB_URI=your_mongodb_uri
+   # JWT_SECRET=your_jwt_secret
+   # PORT=5050
+   npm run dev
+   ```
 
-# Install frontend dependencies
-cd ../client
-npm install
-```
+3. **Frontend Setup**
+   ```bash
+   cd client
+   npm install
+   # Create .env file with:
+   # REACT_APP_API_URL=http://localhost:5050
+   npm start
+   ```
 
-3. Create environment files:
-
-For backend (server/.env):
-```
-NODE_ENV=development
-PORT=5050
-MONGODB_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-CLIENT_URL=http://localhost:3000
-```
-
-For frontend (client/.env):
-```
-REACT_APP_API_URL=http://localhost:5050/api
-```
-
-4. Start the development servers:
-
-```bash
-# Start backend server
-cd server
-npm start
-
-# Start frontend server
-cd ../client
-npm start
-```
-
-## Deployment Instructions
-
-### Backend Deployment (Railway)
-
-1. Create a Railway account and connect your GitHub repository
-2. Set the root directory to `server`
-3. Add the following environment variables:
-   - `NODE_ENV=production`
-   - `MONGODB_URI=your_mongodb_atlas_uri`
-   - `JWT_SECRET=your_jwt_secret`
-   - `CLIENT_URL=your_vercel_frontend_url`
-
-### Frontend Deployment (Vercel)
-
-1. Create a Vercel account and connect your GitHub repository
-2. Set the root directory to `client`
-3. Add the following environment variable:
-   - `REACT_APP_API_URL=your_railway_backend_url`
-
-## Project Structure
-
-```
-todo-app-react/
-├── client/                 # Frontend React application
-│   ├── public/            # Static files
-│   └── src/               # React source files
-│       ├── components/    # React components
-│       └── config.ts      # Configuration
-├── server/                # Backend Node.js application
-│   ├── models/           # MongoDB models
-│   ├── routes/           # API routes
-│   └── index.js          # Server entry point
-└── README.md
-```
-
-## API Endpoints
+## 📝 API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - Login user
 
 ### Todos
-- `GET /api/todos` - Get all todos
-- `POST /api/todos` - Create a new todo
-- `PATCH /api/todos/:id` - Update a todo
-- `DELETE /api/todos/:id` - Delete a todo
+- `GET /api/todos` - Get all todos for authenticated user
+- `POST /api/todos` - Create new todo
+- `PATCH /api/todos/:id` - Update todo
+- `DELETE /api/todos/:id` - Delete todo
 
-## Contributing
+## 🔒 Security Features
+- Password hashing using bcrypt
+- JWT-based authentication
+- Protected routes
+- Input validation
+- CORS configuration
+- Environment variable protection
 
+## 🎨 UI/UX Features
+- Responsive design
+- Modern and clean interface
+- Intuitive navigation
+- Real-time updates
+- Loading states
+- Error handling
+- Form validation
+
+## 🚀 Deployment
+
+### Frontend (Vercel)
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Configure environment variables
+4. Deploy
+
+### Backend (Railway)
+1. Push code to GitHub
+2. Connect repository to Railway
+3. Configure environment variables
+4. Deploy
+
+## 🤝 Contributing
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
+## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Author
+## 👨‍💻 Author
+- GitHub: [@manava10](https://github.com/manava10)
 
-Manava - [GitHub](https://github.com/manava10)
-
-The application is configured for deployment on Vercel (frontend) and Railway (backend).
-
-## License
-
-MIT 
+## 🙏 Acknowledgments
+- React.js community
+- Express.js documentation
+- MongoDB documentation
+- Railway and Vercel for hosting 
