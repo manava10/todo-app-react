@@ -9,6 +9,11 @@ router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
+    // Validate password length
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+    }
+
     // Check if user exists
     let user = await User.findOne({ email });
     if (user) {
@@ -42,6 +47,10 @@ router.post('/register', async (req, res) => {
     });
   } catch (err) {
     console.error('Register error:', err);
+    // Check if it's a validation error
+    if (err.name === 'ValidationError') {
+      return res.status(400).json({ message: err.message });
+    }
     res.status(500).json({ message: 'Server error' });
   }
 });
