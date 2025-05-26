@@ -9,6 +9,8 @@ const Todo = require('./models/Todo');
 const path = require('path');
 
 const app = express();
+
+// Use Railway's PORT or fallback to 5050
 const PORT = process.env.PORT || 5050;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/todo-app';
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
@@ -34,8 +36,17 @@ app.get('/', (req, res) => {
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Start server only after MongoDB connects
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  });
 
 // Auth middleware
 const auth = async (req, res, next) => {
@@ -71,8 +82,3 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-// Start server
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on port ${PORT}`);
-});
