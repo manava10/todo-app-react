@@ -3,7 +3,7 @@
 A modern, full-stack Todo application with productivity features built using React, Node.js, Express, and MongoDB.
 
 ## 🌟 Live Demo
-
+- New Link Deployed - https://manava10.github.io/todo-app-react/
 - Frontend: [https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app](https://todo-app-react-aceyd6sfm-manava10s-projects.vercel.app)
 - Backend API: [https://todo-app-react-production.up.railway.app](https://todo-app-react-production.up.railway.app)
 
